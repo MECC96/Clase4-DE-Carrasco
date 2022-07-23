@@ -1,71 +1,47 @@
-// let artículo = prompt(`¡Bienvenidos a la tienda virtual de la banda TOOL!
-// Seleccione la opción que del artículo que desee comprar:
-// 1) Remera Negra.
-// 2) Sweater Negro.
-// 3) Remera Blanca.
-// 4) Sweater Blanco.
-// 5) Remera Gris.`);
+alert(`¡Bienvenidos a la tienda virtual de la banda TOOL!`)
+const p1 = 29.99 , p2 = 39.99, p3 = 34.99, p4 = 44.99, p5 = 24.99;
+let cantidad = 0, total= 0 ;
+let artículo , answer;
+do{ 
+    totalArticulo();
+}while(answer !== "no" && answer !== "NO" && answer !== "No")
 
-// if(artículo == 1){
+alert(`El total a pagar es de: $${total}`);
 
-// }else if(artículo == 2) {
-    
-// }else if(artículo == 3) {
-    
-// }else if(artículo == 4) {
-    
-// }else if(artículo == 5) {
-    
-// }else{
-
-// }
-
-let artículo = prompt(`¡Bienvenidos a la tienda virtual de la banda TOOL!
-Seleccione la opción que del artículo que desee comprar:
+function pedirCantidadArticulo(){
+    cantidad = parseInt(prompt(`Ingrese la cantidad de unidades que desea del artículo ${artículo}:`));
+    if( cantidad > 0){
+        return cantidad;
+    }else{
+        alert("Dato ingresado inválido. Por favor, intente nuevamente.");
+        pedirCantidadArticulo();
+    }
+}
+function totalArticulo(){
+    artículo = prompt(`Seleccione la opción del artículo que desee comprar:
 1) Remera Negra $29.99.
 2) Sweater Negro $39.99.
 3) Remera Blanca $34.99.
 4) Sweater Gris $44.99.
 5) Remera Gris $24.99.`);
-let cantidad = 0;
-
-function pedirCantidadArticulo(){
-    cantidad = parseInt(prompt(`Ingrese la cantidad de unidades que desea del artículo ${artículo}:`));
-    return cantidad;
-}
-function pedirArtículo() {
-    let total;
-    if(artículo == 1){
-        pedirCantidadArticulo();
-        total = cantidad* 29.99;
-        alert(`El total a pagar es: $${total}`);
+    if(artículo == 1){ 
+        total += pedirCantidadArticulo(artículo)* p1;
+        answer = prompt(`¿Deseas hacer otra compra? Ingrese "no" para salir`);
     }else if(artículo == 2) {
-        pedirCantidadArticulo();
-        total = cantidad* 39.99;
-        alert(`El total a pagar es: $${total}`);
+        total += pedirCantidadArticulo(artículo)* p2;
+        answer = prompt(`¿Deseas hacer otra compra? Ingrese "no" para salir`);
     }else if(artículo == 3) {
-        pedirCantidadArticulo();
-        total = cantidad* 34.99;
-        alert(`El total a pagar es: $${total}`);
+        total += pedirCantidadArticulo(artículo)* p3;
+        answer = prompt(`¿Deseas hacer otra compra? Ingrese "no" para salir`);
     }else if(artículo == 4) {
-        pedirCantidadArticulo();
-        total = cantidad* 44.99;
-        alert(`El total a pagar es: $${total}`);
+        total += pedirCantidadArticulo(artículo)* p4;
+        answer = prompt(`¿Deseas hacer otra compra? Ingrese "no" para salir`);
     }else if(artículo == 5) {
-        pedirCantidadArticulo();
-        total = cantidad* 24.99;
-        alert(`El total a pagar es: $${total}`);
+        total += pedirCantidadArticulo(artículo)* p5;
+        answer = prompt(`¿Deseas hacer otra compra? Ingrese "no" para salir`);
     }else{
-        artículo = prompt(`Dato ingresado inválido. Por favor, intente nuevamente.
-        1) Remera Negra $29.99.
-        2) Sweater Negro $39.99.
-        3) Remera Blanca $34.99.
-        4) Sweater Gris $44.99.
-        5) Remera Gris $24.99.`);
-        pedirArtículo();
+        alert("Dato ingresado inválido. Por favor, intente nuevamente.");
+        totalArticulo();
     }
+    return total;
 }
-
-
-
-pedirArtículo();
